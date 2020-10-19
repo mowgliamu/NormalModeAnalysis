@@ -126,3 +126,6 @@ class TestNormalModeAnalysis(unittest.TestCase):
         freq_test, lmwc = self.func.harmonic_vibrational_analysis
 
         self.assertTrue(np.isclose(freq_true, freq_test, rtol=self.tol).all())
+
+if __name__ == "__main__":
+    unittest.main()
