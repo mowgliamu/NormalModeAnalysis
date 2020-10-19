@@ -3,7 +3,7 @@
 
 import numpy as np
 
-from .physical_constants import fred
+from normal_mode_analysis.physical_constants import fred
 
 # Print Precision!
 np.set_printoptions(precision=8, suppress=True)

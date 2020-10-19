@@ -3,9 +3,9 @@
 
 import numpy as np
 
-from .gaussian_interface import read_log_gaussian, read_fchk_gaussian
-from .input_nma import project_translation, project_rotation, hfreq_cm
-from .physical_constants import au_to_ev
+from normal_mode_analysis.gaussian_interface import read_log_gaussian, read_fchk_gaussian
+from normal_mode_analysis.input_nma import project_translation, project_rotation, hfreq_cm
+from normal_mode_analysis.physical_constants import au_to_ev
 
 # Print Precision!
 np.set_printoptions(precision=8, suppress=True)
