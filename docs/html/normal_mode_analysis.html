@@ -1,0 +1,1247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>normal_mode_analysis.normal_mode_analysis API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>normal_mode_analysis.normal_mode_analysis</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># -*- coding: utf-8 -*-
+# !usr/bin/env python
+
+import numpy as np
+
+from .gaussian_interface import read_log_gaussian, read_fchk_gaussian
+from .input_nma import project_translation, project_rotation, hfreq_cm
+from .physical_constants import au_to_ev
+
+# Print Precision!
+np.set_printoptions(precision=8, suppress=True)
+
+
+# sys.tracebacklimit=0
+
+# -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+# x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-CLASS-SECTION-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x
+# -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+
+class Molecule(object):
+    &#34;&#34;&#34;
+    Abstraction of a molecule, primarily based on the cartesian geometry and hessian.
+    Associated methods will perform the harmonic vibrational analysis and the rigid
+    rotor rotational analysis. Appropriate coordinate transformations will be perfomed.
+    
+    Attributes
+    ----------
+    natom: int
+        Number of atoms
+    amass: array_like
+        Array of atomic masses
+    eq_geom_cart: array_like
+        Molecular geometry in cartesian coordinates
+    force_constant_matrix: array_like
+        Force Constant Matrix in cartesian coordinates
+    energy: float
+        Single point electronic energy at the given geometry
+    zpe: float
+        The zero point energy as reported by Gaussian / ACES
+    gradient: array_like
+        Gradient vector at the corresponding geometry
+    hessian: array_like
+        Hessian matrix at the corresponding geometry
+    frequencies: array_like
+        Harmonic Vibrational Frequencies (in Wavenumbers)
+    mwcart: array_like
+        Mass-weighted cartesian goemetry
+    com: array_like
+        Centre-of-Mass coordinates
+    moi: array_like
+        Moment-of-Inertia Tensor
+    PointGroup: str
+        Point Group Symmetry
+    RotationalConstants: array_like
+        [A, B, C] associated with Ia, Ib, Ic
+    Lcart: array_like
+        Cartesian Normal Coordinates
+    Lmwc: array_like
+        Mass-weighted Cartesian Normal Coordinates
+    Ldmfs: array_like
+        Dimensionless frequency scaled Normal Coordinates
+    Ltransrot: array_like
+        Constructed Translation and/or Rotation Eigenvectors
+    EckartMatrix: array_like
+        Eckart Rotation Matrix for a given reference geometry
+    Duschinsky: array_like
+        Duschinsky rotation matrix for a given reference geometry
+    Displacement: array_like
+        Displacement vector for a given reference geometry
+
+    &#34;&#34;&#34;
+
+    def __init__(self, natom, amass, eq_geom_cart, force_constant_matrix):
+
+        self.natom = natom
+        self.amass = amass
+        self.eq_geom_cart = eq_geom_cart
+        self.force_constant_matrix = force_constant_matrix
+
+        self.mwcart = None
+        self.com = None
+        self.moi = None
+        self.energy = None
+        self.zpe = None
+        self.hessian = None
+        self.frequencies = None
+
+        self.PointGroup = None
+        self.RotationalConstants = None
+
+        self.Lcart = None
+        self.Lmwc = None
+        self.Ldmfs = None
+        self.Ltransrot = None
+
+        self.EckartMatrix = None
+        self.Duschinsky = None
+        self.Displacement = None
+
+        # TODO: Linear molecules
+        if project_translation and project_rotation:
+            self.nmode = 3 * self.natom - 6
+        elif project_translation and not project_rotation:
+            self.nmode = 3 * self.natom - 3
+        elif not project_translation and project_rotation:
+            self.nmode = 3 * self.natom - 3
+        else:
+            self.nmode = 3 * self.natom
+
+        self.gradient = np.zeros(self.nmode)
+
+    def get_mass_weighted_cartesian_coordinates(self):
+        &#34;&#34;&#34;Function to compute mass-weighted Cartesian coordinates
+
+        Returns
+        -------
+        array_like
+            mass-weighted Cartesian coordinates
+
+        &#34;&#34;&#34;
+
+        mwcart = np.zeros((self.natom, 3))
+
+        for i in range(self.natom):
+            mwcart[i][0] = np.sqrt(self.amass[i]) * self.eq_geom_cart[i][0]
+            mwcart[i][1] = np.sqrt(self.amass[i]) * self.eq_geom_cart[i][1]
+            mwcart[i][2] = np.sqrt(self.amass[i]) * self.eq_geom_cart[i][2]
+
+        self.mwcart = mwcart
+
+        return mwcart
+
+    def get_centre_of_mass_mwc(self):
+        &#34;&#34;&#34;Function to compute centre of mass
+
+        Returns
+        -------
+        array_like
+            Centre of mass
+
+        &#34;&#34;&#34;
+
+        TotMass = np.sum(self.amass)
+        CentreMass = np.zeros(3)
+
+        for i in range(self.natom):
+            CentreMass[0] += np.sqrt(self.amass[i]) * self.mwcart[i][0]
+            CentreMass[1] += np.sqrt(self.amass[i]) * self.mwcart[i][1]
+            CentreMass[2] += np.sqrt(self.amass[i]) * self.mwcart[i][2]
+
+        CentreMass = CentreMass / TotMass
+        self.com = CentreMass
+
+        return CentreMass
+
+    def get_inertia_tensor(self):
+        &#34;&#34;&#34;Function to compute moment of inertia tensor
+
+        Returns
+        -------
+        array_like
+            moment of inertia tensor
+
+        &#34;&#34;&#34;
+
+        Inertia_Tensor = np.zeros((3, 3))
+
+        for i in range(self.natom):
+            Inertia_Tensor[0][0] += self.mwcart[i][1] * self.mwcart[i][1] + self.mwcart[i][2] * self.mwcart[i][2]
+            Inertia_Tensor[1][1] += self.mwcart[i][0] * self.mwcart[i][0] + self.mwcart[i][2] * self.mwcart[i][2]
+            Inertia_Tensor[2][2] += self.mwcart[i][0] * self.mwcart[i][0] + self.mwcart[i][1] * self.mwcart[i][1]
+            Inertia_Tensor[0][1] += self.mwcart[i][0] * self.mwcart[i][1]
+            Inertia_Tensor[0][2] += self.mwcart[i][0] * self.mwcart[i][2]
+            Inertia_Tensor[1][2] += self.mwcart[i][1] * self.mwcart[i][2]
+
+        Inertia_Tensor[1][0] = Inertia_Tensor[0][1]
+        Inertia_Tensor[2][0] = Inertia_Tensor[0][2]
+        Inertia_Tensor[2][1] = Inertia_Tensor[1][2]
+
+        self.moi = Inertia_Tensor
+
+        return Inertia_Tensor
+
+    @property
+    def get_eckart_frame_self(self):
+        &#34;&#34;&#34;Function to put the molecule in its own Eckart frame
+
+        Returns
+        -------
+
+        &#34;&#34;&#34;
+
+        # Check if CM at origin, and Inertia_Tensor Diagonal. If yes: exit
+        # If no: translate CM to origin, diagonalize IT, and rotate coordinates
+
+        tolerance = 1e-5
+
+        # Always put COM at origin (even if it already is, does not hurt)
+        # for i in range(self.natom):
+        #    self.eq_geom_cart[i:,] = self.eq_geom_cart[i:,] - self.com
+
+        self.eq_geom_cart = self.eq_geom_cart - self.com.T
+        self.com = np.zeros(3)
+
+        Ival = np.zeros(3)
+        Ivec = np.zeros((3, 3))
+
+        # Check for MOI
+        for i in range(3):
+            for j in range(3):
+                if i != j:
+                    if self.moi[i, j] &gt; tolerance:
+                        Ival, Ivec = np.linalg.eigh(self.moi)
+                        break
+                    else:
+                        Ival, Ivec = np.linalg.eigh(self.moi)
+                else:
+                    pass
+
+        self.moi = np.diag(Ival)
+
+        # Rotate coordinates to Principal Axes
+        self.eq_geom_cart = np.dot(self.eq_geom_cart, Ivec)
+
+        return
+
+    @property
+    def harmonic_vibrational_analysis(self):
+        &#34;&#34;&#34;Harmonic Vibrational Analysis to get the normal modes
+
+        Perform the normal mode analysis starting from the 3N x 3N Force Constant Matrix:
+
+        - project out translations and/or rotations as requested
+        - mass-weight force constant matrix, diagonalize (omega, L)
+        - get frequencies in cm-1 (sqrt(omega)*5140.48)
+
+        Returns
+        -------
+        array_like
+            Vibrational frquencies in wavenumbers
+        array_like
+            Normal modes
+
+        &#34;&#34;&#34;
+        # Get the matrix of atomic masses
+        mass_matrix_sqrt_div = np.diag(np.repeat(1.0 / np.sqrt(self.amass), 3))
+
+        # calculate the center of mass in cartesian coordinates
+        xyzcom = self.eq_geom_cart - self.com.T
+
+        # Initialize (3N, 6) array for Translation and Rotation
+        Dmat = np.zeros((3 * self.natom, 6), dtype=float)
+
+        #####################################################
+        # Construct Eigenvectors correspoding to Translation#
+        #####################################################
+
+        for i in range(3):
+            for k in range(self.natom):
+                for alpha in range(3):
+                    if alpha == i:
+                        Dmat[3 * k + alpha, i] = np.sqrt(self.amass[k])
+                    else:
+                        pass
+
+        ###################################################
+        # Construct Eigenvectors correspoding to Rotation #
+        ###################################################
+
+        # 1. Get Inertia Tensor and Diagonalize
+        Ival, Ivec = np.linalg.eigh(self.moi)
+
+        # 2. Construct Pmat
+        Pmat = np.dot(xyzcom, Ivec)
+
+        # 3. Construct Rotational Normal Coordinates
+        for i in range(self.natom):
+            for j in range(3):
+                Dmat[3 * i + j, 3] = (Pmat[i, 1] * Ivec[j, 2] - Pmat[i, 2] * Ivec[j, 1]) * np.sqrt(self.amass[i])
+                Dmat[3 * i + j, 4] = (Pmat[i, 2] * Ivec[j, 0] - Pmat[i, 0] * Ivec[j, 2]) * np.sqrt(self.amass[i])
+                Dmat[3 * i + j, 5] = (Pmat[i, 0] * Ivec[j, 1] - Pmat[i, 1] * Ivec[j, 0]) * np.sqrt(self.amass[i])
+
+        ##################################################################################
+        # Set the orthonormalized Translation-Rotation Eigenvectors to attribute Ltransrot
+        ##################################################################################
+
+        Translation = Dmat[:, 0:3]
+        Rotation = Dmat[:, 3:6]
+
+        # Separately orthonormalize translation and rotation
+        Dtrans, xxx = np.linalg.qr(Translation)
+        Drot, xxx = np.linalg.qr(Rotation)
+
+        LTR = np.zeros((3 * self.natom, 6), dtype=float)
+        LTR[:, 0:3] = Dtrans
+        LTR[:, 3:6] = Drot
+
+        self.Ltransrot = Drot
+
+        # Mass-weight the force constant matrix
+        mw_fcm = np.dot(mass_matrix_sqrt_div, np.dot(self.force_constant_matrix, mass_matrix_sqrt_div))
+
+        # Project out Rotation and Translation from Hessian
+        Imat = np.eye(LTR.shape[0])
+        llt = np.dot(LTR, LTR.T)
+        proj_trans_rot_hessian = np.dot(Imat - llt, np.dot(mw_fcm, Imat - llt))
+        rphval, rphvec = np.linalg.eigh(proj_trans_rot_hessian)
+
+        # SORT OUT ALL -VE FREQUENCIES
+        all_index_0 = np.where(abs(rphval) &lt; 1e-4)[0]
+        eigvals_0 = rphval[all_index_0]
+        eigvec_0 = rphvec[:, all_index_0]
+
+        # A cleaner solution?
+        rphval = np.delete(rphval, all_index_0, axis=0)
+        rphvec = np.delete(rphvec, all_index_0, axis=1)
+        rphval = np.concatenate([eigvals_0, rphval])
+        rphvec = np.concatenate([eigvec_0, rphvec], axis=1)
+
+        vib_freq_cm = np.sqrt(abs(rphval[6:])) * hfreq_cm
+        Lmwc = rphvec[:, 6:3 * self.natom]
+
+        # NORMAL MODES - SET ATTRIBUTE
+        self.Lmwc = Lmwc
+
+        # HESSIAN - SET ATTRIBUTE [ATOMIC UNITS AT THIS POINT]
+        self.hessian = np.diagflat(rphval[3:])
+
+        # FREQUENCIES - SET ATTRIBUTE
+        self.frequencies = vib_freq_cm
+
+        return vib_freq_cm, Lmwc
+
+
+def driver_process_abinitio_data(version_gaussian, data_minima):
+    &#34;&#34;&#34;Driver function to process raw abinitio data obtained from GAUSSIAN
+
+    Parameters
+    ----------
+    version_gaussian: str
+        Gaussian version: 09 or 16
+    data_minima: array_like
+        List of output files with relativep path
+
+    Returns
+    -------
+    object
+        Molecule class object with new values
+
+    &#34;&#34;&#34;
+
+    E0, ZPE = read_log_gaussian(data_minima[0])
+    natom, anums, amass, cgeom, gradient, fcm = read_fchk_gaussian(data_minima[1], version_gaussian)
+
+    # create instance of Molecule
+    object_minima = Molecule(natom, amass, cgeom, fcm)
+
+    # Get the matrix of atomic masses
+    mass_matrix_sqrt_div = np.diag(np.repeat(1.0 / np.sqrt(amass), 3))
+
+    # Mass-weigthed carteisan gradient (amu^-0.5*eV)
+    gradient_mw = np.dot(mass_matrix_sqrt_div, gradient * au_to_ev)
+
+    # set attribute for energy and zpe
+    setattr(object_minima, &#39;energy&#39;, E0)
+    setattr(object_minima, &#39;zpe&#39;, ZPE)
+
+    # mass-weighted cartesian coordinates
+    object_minima.get_mass_weighted_cartesian_coordinates()
+
+    # centre of mass
+    object_minima.get_centre_of_mass_mwc()
+
+    # moment of inertia tensor
+    object_minima.get_inertia_tensor()
+
+    # normal coordinates [HARMONIC VIBRATIONAL ANALYSIS]
+    old_vib_freq_cm, object_minima_lmwc = object_minima.harmonic_vibrational_analysis
+
+    # Test if normal modes are orthonormal
+    if np.allclose(np.dot(object_minima_lmwc.T, object_minima_lmwc), np.identity(object_minima.nmode)):
+        pass
+    else:
+        raise ValueError(&#39;Minima normal modes not orthonormal. Exiting...&#39;)
+
+    # project out rotations and translations from mass-weighted gradient
+    LTR = object_minima.Ltransrot
+    Imat = np.eye(LTR.shape[0])
+    llt = np.dot(LTR, LTR.T)
+    gradient_mw = np.dot(gradient_mw.T, (Imat - llt))
+
+    # transform gradient to normal mode coordinates
+    gradient_nm = np.dot(object_minima_lmwc.T, gradient_mw)
+    setattr(object_minima, &#39;gradient&#39;, gradient_nm)
+
+    # convert hessian to new units [eV / amu * Bohr^2]
+    hessian_new = getattr(object_minima, &#39;hessian&#39;) * au_to_ev
+    setattr(object_minima, &#39;hessian&#39;, hessian_new)
+
+    return object_minima</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="normal_mode_analysis.normal_mode_analysis.driver_process_abinitio_data"><code class="name flex">
+<span>def <span class="ident">driver_process_abinitio_data</span></span>(<span>version_gaussian, data_minima)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Driver function to process raw abinitio data obtained from GAUSSIAN</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>version_gaussian</code></strong> :&ensp;<code>str</code></dt>
+<dd>Gaussian version: 09 or 16</dd>
+<dt><strong><code>data_minima</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>List of output files with relativep path</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>object</code></dt>
+<dd>Molecule class object with new values</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def driver_process_abinitio_data(version_gaussian, data_minima):
+    &#34;&#34;&#34;Driver function to process raw abinitio data obtained from GAUSSIAN
+
+    Parameters
+    ----------
+    version_gaussian: str
+        Gaussian version: 09 or 16
+    data_minima: array_like
+        List of output files with relativep path
+
+    Returns
+    -------
+    object
+        Molecule class object with new values
+
+    &#34;&#34;&#34;
+
+    E0, ZPE = read_log_gaussian(data_minima[0])
+    natom, anums, amass, cgeom, gradient, fcm = read_fchk_gaussian(data_minima[1], version_gaussian)
+
+    # create instance of Molecule
+    object_minima = Molecule(natom, amass, cgeom, fcm)
+
+    # Get the matrix of atomic masses
+    mass_matrix_sqrt_div = np.diag(np.repeat(1.0 / np.sqrt(amass), 3))
+
+    # Mass-weigthed carteisan gradient (amu^-0.5*eV)
+    gradient_mw = np.dot(mass_matrix_sqrt_div, gradient * au_to_ev)
+
+    # set attribute for energy and zpe
+    setattr(object_minima, &#39;energy&#39;, E0)
+    setattr(object_minima, &#39;zpe&#39;, ZPE)
+
+    # mass-weighted cartesian coordinates
+    object_minima.get_mass_weighted_cartesian_coordinates()
+
+    # centre of mass
+    object_minima.get_centre_of_mass_mwc()
+
+    # moment of inertia tensor
+    object_minima.get_inertia_tensor()
+
+    # normal coordinates [HARMONIC VIBRATIONAL ANALYSIS]
+    old_vib_freq_cm, object_minima_lmwc = object_minima.harmonic_vibrational_analysis
+
+    # Test if normal modes are orthonormal
+    if np.allclose(np.dot(object_minima_lmwc.T, object_minima_lmwc), np.identity(object_minima.nmode)):
+        pass
+    else:
+        raise ValueError(&#39;Minima normal modes not orthonormal. Exiting...&#39;)
+
+    # project out rotations and translations from mass-weighted gradient
+    LTR = object_minima.Ltransrot
+    Imat = np.eye(LTR.shape[0])
+    llt = np.dot(LTR, LTR.T)
+    gradient_mw = np.dot(gradient_mw.T, (Imat - llt))
+
+    # transform gradient to normal mode coordinates
+    gradient_nm = np.dot(object_minima_lmwc.T, gradient_mw)
+    setattr(object_minima, &#39;gradient&#39;, gradient_nm)
+
+    # convert hessian to new units [eV / amu * Bohr^2]
+    hessian_new = getattr(object_minima, &#39;hessian&#39;) * au_to_ev
+    setattr(object_minima, &#39;hessian&#39;, hessian_new)
+
+    return object_minima</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="normal_mode_analysis.normal_mode_analysis.Molecule"><code class="flex name class">
+<span>class <span class="ident">Molecule</span></span>
+<span>(</span><span>natom, amass, eq_geom_cart, force_constant_matrix)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Abstraction of a molecule, primarily based on the cartesian geometry and hessian.
+Associated methods will perform the harmonic vibrational analysis and the rigid
+rotor rotational analysis. Appropriate coordinate transformations will be perfomed.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>natom</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of atoms</dd>
+<dt><strong><code>amass</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>Array of atomic masses</dd>
+<dt><strong><code>eq_geom_cart</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>Molecular geometry in cartesian coordinates</dd>
+<dt><strong><code>force_constant_matrix</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>Force Constant Matrix in cartesian coordinates</dd>
+<dt><strong><code>energy</code></strong> :&ensp;<code>float</code></dt>
+<dd>Single point electronic energy at the given geometry</dd>
+<dt><strong><code>zpe</code></strong> :&ensp;<code>float</code></dt>
+<dd>The zero point energy as reported by Gaussian / ACES</dd>
+<dt><strong><code>gradient</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>Gradient vector at the corresponding geometry</dd>
+<dt><strong><code>hessian</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>Hessian matrix at the corresponding geometry</dd>
+<dt><strong><code>frequencies</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>Harmonic Vibrational Frequencies (in Wavenumbers)</dd>
+<dt><strong><code>mwcart</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>Mass-weighted cartesian goemetry</dd>
+<dt><strong><code>com</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>Centre-of-Mass coordinates</dd>
+<dt><strong><code>moi</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>Moment-of-Inertia Tensor</dd>
+<dt><strong><code>PointGroup</code></strong> :&ensp;<code>str</code></dt>
+<dd>Point Group Symmetry</dd>
+<dt><strong><code>RotationalConstants</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>[A, B, C] associated with Ia, Ib, Ic</dd>
+<dt><strong><code>Lcart</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>Cartesian Normal Coordinates</dd>
+<dt><strong><code>Lmwc</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>Mass-weighted Cartesian Normal Coordinates</dd>
+<dt><strong><code>Ldmfs</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>Dimensionless frequency scaled Normal Coordinates</dd>
+<dt><strong><code>Ltransrot</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>Constructed Translation and/or Rotation Eigenvectors</dd>
+<dt><strong><code>EckartMatrix</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>Eckart Rotation Matrix for a given reference geometry</dd>
+<dt><strong><code>Duschinsky</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>Duschinsky rotation matrix for a given reference geometry</dd>
+<dt><strong><code>Displacement</code></strong> :&ensp;<code>array_like</code></dt>
+<dd>Displacement vector for a given reference geometry</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Molecule(object):
+    &#34;&#34;&#34;
+    Abstraction of a molecule, primarily based on the cartesian geometry and hessian.
+    Associated methods will perform the harmonic vibrational analysis and the rigid
+    rotor rotational analysis. Appropriate coordinate transformations will be perfomed.
+    
+    Attributes
+    ----------
+    natom: int
+        Number of atoms
+    amass: array_like
+        Array of atomic masses
+    eq_geom_cart: array_like
+        Molecular geometry in cartesian coordinates
+    force_constant_matrix: array_like
+        Force Constant Matrix in cartesian coordinates
+    energy: float
+        Single point electronic energy at the given geometry
+    zpe: float
+        The zero point energy as reported by Gaussian / ACES
+    gradient: array_like
+        Gradient vector at the corresponding geometry
+    hessian: array_like
+        Hessian matrix at the corresponding geometry
+    frequencies: array_like
+        Harmonic Vibrational Frequencies (in Wavenumbers)
+    mwcart: array_like
+        Mass-weighted cartesian goemetry
+    com: array_like
+        Centre-of-Mass coordinates
+    moi: array_like
+        Moment-of-Inertia Tensor
+    PointGroup: str
+        Point Group Symmetry
+    RotationalConstants: array_like
+        [A, B, C] associated with Ia, Ib, Ic
+    Lcart: array_like
+        Cartesian Normal Coordinates
+    Lmwc: array_like
+        Mass-weighted Cartesian Normal Coordinates
+    Ldmfs: array_like
+        Dimensionless frequency scaled Normal Coordinates
+    Ltransrot: array_like
+        Constructed Translation and/or Rotation Eigenvectors
+    EckartMatrix: array_like
+        Eckart Rotation Matrix for a given reference geometry
+    Duschinsky: array_like
+        Duschinsky rotation matrix for a given reference geometry
+    Displacement: array_like
+        Displacement vector for a given reference geometry
+
+    &#34;&#34;&#34;
+
+    def __init__(self, natom, amass, eq_geom_cart, force_constant_matrix):
+
+        self.natom = natom
+        self.amass = amass
+        self.eq_geom_cart = eq_geom_cart
+        self.force_constant_matrix = force_constant_matrix
+
+        self.mwcart = None
+        self.com = None
+        self.moi = None
+        self.energy = None
+        self.zpe = None
+        self.hessian = None
+        self.frequencies = None
+
+        self.PointGroup = None
+        self.RotationalConstants = None
+
+        self.Lcart = None
+        self.Lmwc = None
+        self.Ldmfs = None
+        self.Ltransrot = None
+
+        self.EckartMatrix = None
+        self.Duschinsky = None
+        self.Displacement = None
+
+        # TODO: Linear molecules
+        if project_translation and project_rotation:
+            self.nmode = 3 * self.natom - 6
+        elif project_translation and not project_rotation:
+            self.nmode = 3 * self.natom - 3
+        elif not project_translation and project_rotation:
+            self.nmode = 3 * self.natom - 3
+        else:
+            self.nmode = 3 * self.natom
+
+        self.gradient = np.zeros(self.nmode)
+
+    def get_mass_weighted_cartesian_coordinates(self):
+        &#34;&#34;&#34;Function to compute mass-weighted Cartesian coordinates
+
+        Returns
+        -------
+        array_like
+            mass-weighted Cartesian coordinates
+
+        &#34;&#34;&#34;
+
+        mwcart = np.zeros((self.natom, 3))
+
+        for i in range(self.natom):
+            mwcart[i][0] = np.sqrt(self.amass[i]) * self.eq_geom_cart[i][0]
+            mwcart[i][1] = np.sqrt(self.amass[i]) * self.eq_geom_cart[i][1]
+            mwcart[i][2] = np.sqrt(self.amass[i]) * self.eq_geom_cart[i][2]
+
+        self.mwcart = mwcart
+
+        return mwcart
+
+    def get_centre_of_mass_mwc(self):
+        &#34;&#34;&#34;Function to compute centre of mass
+
+        Returns
+        -------
+        array_like
+            Centre of mass
+
+        &#34;&#34;&#34;
+
+        TotMass = np.sum(self.amass)
+        CentreMass = np.zeros(3)
+
+        for i in range(self.natom):
+            CentreMass[0] += np.sqrt(self.amass[i]) * self.mwcart[i][0]
+            CentreMass[1] += np.sqrt(self.amass[i]) * self.mwcart[i][1]
+            CentreMass[2] += np.sqrt(self.amass[i]) * self.mwcart[i][2]
+
+        CentreMass = CentreMass / TotMass
+        self.com = CentreMass
+
+        return CentreMass
+
+    def get_inertia_tensor(self):
+        &#34;&#34;&#34;Function to compute moment of inertia tensor
+
+        Returns
+        -------
+        array_like
+            moment of inertia tensor
+
+        &#34;&#34;&#34;
+
+        Inertia_Tensor = np.zeros((3, 3))
+
+        for i in range(self.natom):
+            Inertia_Tensor[0][0] += self.mwcart[i][1] * self.mwcart[i][1] + self.mwcart[i][2] * self.mwcart[i][2]
+            Inertia_Tensor[1][1] += self.mwcart[i][0] * self.mwcart[i][0] + self.mwcart[i][2] * self.mwcart[i][2]
+            Inertia_Tensor[2][2] += self.mwcart[i][0] * self.mwcart[i][0] + self.mwcart[i][1] * self.mwcart[i][1]
+            Inertia_Tensor[0][1] += self.mwcart[i][0] * self.mwcart[i][1]
+            Inertia_Tensor[0][2] += self.mwcart[i][0] * self.mwcart[i][2]
+            Inertia_Tensor[1][2] += self.mwcart[i][1] * self.mwcart[i][2]
+
+        Inertia_Tensor[1][0] = Inertia_Tensor[0][1]
+        Inertia_Tensor[2][0] = Inertia_Tensor[0][2]
+        Inertia_Tensor[2][1] = Inertia_Tensor[1][2]
+
+        self.moi = Inertia_Tensor
+
+        return Inertia_Tensor
+
+    @property
+    def get_eckart_frame_self(self):
+        &#34;&#34;&#34;Function to put the molecule in its own Eckart frame
+
+        Returns
+        -------
+
+        &#34;&#34;&#34;
+
+        # Check if CM at origin, and Inertia_Tensor Diagonal. If yes: exit
+        # If no: translate CM to origin, diagonalize IT, and rotate coordinates
+
+        tolerance = 1e-5
+
+        # Always put COM at origin (even if it already is, does not hurt)
+        # for i in range(self.natom):
+        #    self.eq_geom_cart[i:,] = self.eq_geom_cart[i:,] - self.com
+
+        self.eq_geom_cart = self.eq_geom_cart - self.com.T
+        self.com = np.zeros(3)
+
+        Ival = np.zeros(3)
+        Ivec = np.zeros((3, 3))
+
+        # Check for MOI
+        for i in range(3):
+            for j in range(3):
+                if i != j:
+                    if self.moi[i, j] &gt; tolerance:
+                        Ival, Ivec = np.linalg.eigh(self.moi)
+                        break
+                    else:
+                        Ival, Ivec = np.linalg.eigh(self.moi)
+                else:
+                    pass
+
+        self.moi = np.diag(Ival)
+
+        # Rotate coordinates to Principal Axes
+        self.eq_geom_cart = np.dot(self.eq_geom_cart, Ivec)
+
+        return
+
+    @property
+    def harmonic_vibrational_analysis(self):
+        &#34;&#34;&#34;Harmonic Vibrational Analysis to get the normal modes
+
+        Perform the normal mode analysis starting from the 3N x 3N Force Constant Matrix:
+
+        - project out translations and/or rotations as requested
+        - mass-weight force constant matrix, diagonalize (omega, L)
+        - get frequencies in cm-1 (sqrt(omega)*5140.48)
+
+        Returns
+        -------
+        array_like
+            Vibrational frquencies in wavenumbers
+        array_like
+            Normal modes
+
+        &#34;&#34;&#34;
+        # Get the matrix of atomic masses
+        mass_matrix_sqrt_div = np.diag(np.repeat(1.0 / np.sqrt(self.amass), 3))
+
+        # calculate the center of mass in cartesian coordinates
+        xyzcom = self.eq_geom_cart - self.com.T
+
+        # Initialize (3N, 6) array for Translation and Rotation
+        Dmat = np.zeros((3 * self.natom, 6), dtype=float)
+
+        #####################################################
+        # Construct Eigenvectors correspoding to Translation#
+        #####################################################
+
+        for i in range(3):
+            for k in range(self.natom):
+                for alpha in range(3):
+                    if alpha == i:
+                        Dmat[3 * k + alpha, i] = np.sqrt(self.amass[k])
+                    else:
+                        pass
+
+        ###################################################
+        # Construct Eigenvectors correspoding to Rotation #
+        ###################################################
+
+        # 1. Get Inertia Tensor and Diagonalize
+        Ival, Ivec = np.linalg.eigh(self.moi)
+
+        # 2. Construct Pmat
+        Pmat = np.dot(xyzcom, Ivec)
+
+        # 3. Construct Rotational Normal Coordinates
+        for i in range(self.natom):
+            for j in range(3):
+                Dmat[3 * i + j, 3] = (Pmat[i, 1] * Ivec[j, 2] - Pmat[i, 2] * Ivec[j, 1]) * np.sqrt(self.amass[i])
+                Dmat[3 * i + j, 4] = (Pmat[i, 2] * Ivec[j, 0] - Pmat[i, 0] * Ivec[j, 2]) * np.sqrt(self.amass[i])
+                Dmat[3 * i + j, 5] = (Pmat[i, 0] * Ivec[j, 1] - Pmat[i, 1] * Ivec[j, 0]) * np.sqrt(self.amass[i])
+
+        ##################################################################################
+        # Set the orthonormalized Translation-Rotation Eigenvectors to attribute Ltransrot
+        ##################################################################################
+
+        Translation = Dmat[:, 0:3]
+        Rotation = Dmat[:, 3:6]
+
+        # Separately orthonormalize translation and rotation
+        Dtrans, xxx = np.linalg.qr(Translation)
+        Drot, xxx = np.linalg.qr(Rotation)
+
+        LTR = np.zeros((3 * self.natom, 6), dtype=float)
+        LTR[:, 0:3] = Dtrans
+        LTR[:, 3:6] = Drot
+
+        self.Ltransrot = Drot
+
+        # Mass-weight the force constant matrix
+        mw_fcm = np.dot(mass_matrix_sqrt_div, np.dot(self.force_constant_matrix, mass_matrix_sqrt_div))
+
+        # Project out Rotation and Translation from Hessian
+        Imat = np.eye(LTR.shape[0])
+        llt = np.dot(LTR, LTR.T)
+        proj_trans_rot_hessian = np.dot(Imat - llt, np.dot(mw_fcm, Imat - llt))
+        rphval, rphvec = np.linalg.eigh(proj_trans_rot_hessian)
+
+        # SORT OUT ALL -VE FREQUENCIES
+        all_index_0 = np.where(abs(rphval) &lt; 1e-4)[0]
+        eigvals_0 = rphval[all_index_0]
+        eigvec_0 = rphvec[:, all_index_0]
+
+        # A cleaner solution?
+        rphval = np.delete(rphval, all_index_0, axis=0)
+        rphvec = np.delete(rphvec, all_index_0, axis=1)
+        rphval = np.concatenate([eigvals_0, rphval])
+        rphvec = np.concatenate([eigvec_0, rphvec], axis=1)
+
+        vib_freq_cm = np.sqrt(abs(rphval[6:])) * hfreq_cm
+        Lmwc = rphvec[:, 6:3 * self.natom]
+
+        # NORMAL MODES - SET ATTRIBUTE
+        self.Lmwc = Lmwc
+
+        # HESSIAN - SET ATTRIBUTE [ATOMIC UNITS AT THIS POINT]
+        self.hessian = np.diagflat(rphval[3:])
+
+        # FREQUENCIES - SET ATTRIBUTE
+        self.frequencies = vib_freq_cm
+
+        return vib_freq_cm, Lmwc</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="normal_mode_analysis.normal_mode_analysis.Molecule.get_eckart_frame_self"><code class="name">var <span class="ident">get_eckart_frame_self</span></code></dt>
+<dd>
+<div class="desc"><p>Function to put the molecule in its own Eckart frame</p>
+<h2 id="returns">Returns</h2></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def get_eckart_frame_self(self):
+    &#34;&#34;&#34;Function to put the molecule in its own Eckart frame
+
+    Returns
+    -------
+
+    &#34;&#34;&#34;
+
+    # Check if CM at origin, and Inertia_Tensor Diagonal. If yes: exit
+    # If no: translate CM to origin, diagonalize IT, and rotate coordinates
+
+    tolerance = 1e-5
+
+    # Always put COM at origin (even if it already is, does not hurt)
+    # for i in range(self.natom):
+    #    self.eq_geom_cart[i:,] = self.eq_geom_cart[i:,] - self.com
+
+    self.eq_geom_cart = self.eq_geom_cart - self.com.T
+    self.com = np.zeros(3)
+
+    Ival = np.zeros(3)
+    Ivec = np.zeros((3, 3))
+
+    # Check for MOI
+    for i in range(3):
+        for j in range(3):
+            if i != j:
+                if self.moi[i, j] &gt; tolerance:
+                    Ival, Ivec = np.linalg.eigh(self.moi)
+                    break
+                else:
+                    Ival, Ivec = np.linalg.eigh(self.moi)
+            else:
+                pass
+
+    self.moi = np.diag(Ival)
+
+    # Rotate coordinates to Principal Axes
+    self.eq_geom_cart = np.dot(self.eq_geom_cart, Ivec)
+
+    return</code></pre>
+</details>
+</dd>
+<dt id="normal_mode_analysis.normal_mode_analysis.Molecule.harmonic_vibrational_analysis"><code class="name">var <span class="ident">harmonic_vibrational_analysis</span></code></dt>
+<dd>
+<div class="desc"><p>Harmonic Vibrational Analysis to get the normal modes</p>
+<p>Perform the normal mode analysis starting from the 3N x 3N Force Constant Matrix:</p>
+<ul>
+<li>project out translations and/or rotations as requested</li>
+<li>mass-weight force constant matrix, diagonalize (omega, L)</li>
+<li>get frequencies in cm-1 (sqrt(omega)*5140.48)</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>array_like</code></dt>
+<dd>Vibrational frquencies in wavenumbers</dd>
+<dt><code>array_like</code></dt>
+<dd>Normal modes</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def harmonic_vibrational_analysis(self):
+    &#34;&#34;&#34;Harmonic Vibrational Analysis to get the normal modes
+
+    Perform the normal mode analysis starting from the 3N x 3N Force Constant Matrix:
+
+    - project out translations and/or rotations as requested
+    - mass-weight force constant matrix, diagonalize (omega, L)
+    - get frequencies in cm-1 (sqrt(omega)*5140.48)
+
+    Returns
+    -------
+    array_like
+        Vibrational frquencies in wavenumbers
+    array_like
+        Normal modes
+
+    &#34;&#34;&#34;
+    # Get the matrix of atomic masses
+    mass_matrix_sqrt_div = np.diag(np.repeat(1.0 / np.sqrt(self.amass), 3))
+
+    # calculate the center of mass in cartesian coordinates
+    xyzcom = self.eq_geom_cart - self.com.T
+
+    # Initialize (3N, 6) array for Translation and Rotation
+    Dmat = np.zeros((3 * self.natom, 6), dtype=float)
+
+    #####################################################
+    # Construct Eigenvectors correspoding to Translation#
+    #####################################################
+
+    for i in range(3):
+        for k in range(self.natom):
+            for alpha in range(3):
+                if alpha == i:
+                    Dmat[3 * k + alpha, i] = np.sqrt(self.amass[k])
+                else:
+                    pass
+
+    ###################################################
+    # Construct Eigenvectors correspoding to Rotation #
+    ###################################################
+
+    # 1. Get Inertia Tensor and Diagonalize
+    Ival, Ivec = np.linalg.eigh(self.moi)
+
+    # 2. Construct Pmat
+    Pmat = np.dot(xyzcom, Ivec)
+
+    # 3. Construct Rotational Normal Coordinates
+    for i in range(self.natom):
+        for j in range(3):
+            Dmat[3 * i + j, 3] = (Pmat[i, 1] * Ivec[j, 2] - Pmat[i, 2] * Ivec[j, 1]) * np.sqrt(self.amass[i])
+            Dmat[3 * i + j, 4] = (Pmat[i, 2] * Ivec[j, 0] - Pmat[i, 0] * Ivec[j, 2]) * np.sqrt(self.amass[i])
+            Dmat[3 * i + j, 5] = (Pmat[i, 0] * Ivec[j, 1] - Pmat[i, 1] * Ivec[j, 0]) * np.sqrt(self.amass[i])
+
+    ##################################################################################
+    # Set the orthonormalized Translation-Rotation Eigenvectors to attribute Ltransrot
+    ##################################################################################
+
+    Translation = Dmat[:, 0:3]
+    Rotation = Dmat[:, 3:6]
+
+    # Separately orthonormalize translation and rotation
+    Dtrans, xxx = np.linalg.qr(Translation)
+    Drot, xxx = np.linalg.qr(Rotation)
+
+    LTR = np.zeros((3 * self.natom, 6), dtype=float)
+    LTR[:, 0:3] = Dtrans
+    LTR[:, 3:6] = Drot
+
+    self.Ltransrot = Drot
+
+    # Mass-weight the force constant matrix
+    mw_fcm = np.dot(mass_matrix_sqrt_div, np.dot(self.force_constant_matrix, mass_matrix_sqrt_div))
+
+    # Project out Rotation and Translation from Hessian
+    Imat = np.eye(LTR.shape[0])
+    llt = np.dot(LTR, LTR.T)
+    proj_trans_rot_hessian = np.dot(Imat - llt, np.dot(mw_fcm, Imat - llt))
+    rphval, rphvec = np.linalg.eigh(proj_trans_rot_hessian)
+
+    # SORT OUT ALL -VE FREQUENCIES
+    all_index_0 = np.where(abs(rphval) &lt; 1e-4)[0]
+    eigvals_0 = rphval[all_index_0]
+    eigvec_0 = rphvec[:, all_index_0]
+
+    # A cleaner solution?
+    rphval = np.delete(rphval, all_index_0, axis=0)
+    rphvec = np.delete(rphvec, all_index_0, axis=1)
+    rphval = np.concatenate([eigvals_0, rphval])
+    rphvec = np.concatenate([eigvec_0, rphvec], axis=1)
+
+    vib_freq_cm = np.sqrt(abs(rphval[6:])) * hfreq_cm
+    Lmwc = rphvec[:, 6:3 * self.natom]
+
+    # NORMAL MODES - SET ATTRIBUTE
+    self.Lmwc = Lmwc
+
+    # HESSIAN - SET ATTRIBUTE [ATOMIC UNITS AT THIS POINT]
+    self.hessian = np.diagflat(rphval[3:])
+
+    # FREQUENCIES - SET ATTRIBUTE
+    self.frequencies = vib_freq_cm
+
+    return vib_freq_cm, Lmwc</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="normal_mode_analysis.normal_mode_analysis.Molecule.get_centre_of_mass_mwc"><code class="name flex">
+<span>def <span class="ident">get_centre_of_mass_mwc</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to compute centre of mass</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>array_like</code></dt>
+<dd>Centre of mass</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_centre_of_mass_mwc(self):
+    &#34;&#34;&#34;Function to compute centre of mass
+
+    Returns
+    -------
+    array_like
+        Centre of mass
+
+    &#34;&#34;&#34;
+
+    TotMass = np.sum(self.amass)
+    CentreMass = np.zeros(3)
+
+    for i in range(self.natom):
+        CentreMass[0] += np.sqrt(self.amass[i]) * self.mwcart[i][0]
+        CentreMass[1] += np.sqrt(self.amass[i]) * self.mwcart[i][1]
+        CentreMass[2] += np.sqrt(self.amass[i]) * self.mwcart[i][2]
+
+    CentreMass = CentreMass / TotMass
+    self.com = CentreMass
+
+    return CentreMass</code></pre>
+</details>
+</dd>
+<dt id="normal_mode_analysis.normal_mode_analysis.Molecule.get_inertia_tensor"><code class="name flex">
+<span>def <span class="ident">get_inertia_tensor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to compute moment of inertia tensor</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>array_like</code></dt>
+<dd>moment of inertia tensor</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_inertia_tensor(self):
+    &#34;&#34;&#34;Function to compute moment of inertia tensor
+
+    Returns
+    -------
+    array_like
+        moment of inertia tensor
+
+    &#34;&#34;&#34;
+
+    Inertia_Tensor = np.zeros((3, 3))
+
+    for i in range(self.natom):
+        Inertia_Tensor[0][0] += self.mwcart[i][1] * self.mwcart[i][1] + self.mwcart[i][2] * self.mwcart[i][2]
+        Inertia_Tensor[1][1] += self.mwcart[i][0] * self.mwcart[i][0] + self.mwcart[i][2] * self.mwcart[i][2]
+        Inertia_Tensor[2][2] += self.mwcart[i][0] * self.mwcart[i][0] + self.mwcart[i][1] * self.mwcart[i][1]
+        Inertia_Tensor[0][1] += self.mwcart[i][0] * self.mwcart[i][1]
+        Inertia_Tensor[0][2] += self.mwcart[i][0] * self.mwcart[i][2]
+        Inertia_Tensor[1][2] += self.mwcart[i][1] * self.mwcart[i][2]
+
+    Inertia_Tensor[1][0] = Inertia_Tensor[0][1]
+    Inertia_Tensor[2][0] = Inertia_Tensor[0][2]
+    Inertia_Tensor[2][1] = Inertia_Tensor[1][2]
+
+    self.moi = Inertia_Tensor
+
+    return Inertia_Tensor</code></pre>
+</details>
+</dd>
+<dt id="normal_mode_analysis.normal_mode_analysis.Molecule.get_mass_weighted_cartesian_coordinates"><code class="name flex">
+<span>def <span class="ident">get_mass_weighted_cartesian_coordinates</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to compute mass-weighted Cartesian coordinates</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>array_like</code></dt>
+<dd>mass-weighted Cartesian coordinates</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_mass_weighted_cartesian_coordinates(self):
+    &#34;&#34;&#34;Function to compute mass-weighted Cartesian coordinates
+
+    Returns
+    -------
+    array_like
+        mass-weighted Cartesian coordinates
+
+    &#34;&#34;&#34;
+
+    mwcart = np.zeros((self.natom, 3))
+
+    for i in range(self.natom):
+        mwcart[i][0] = np.sqrt(self.amass[i]) * self.eq_geom_cart[i][0]
+        mwcart[i][1] = np.sqrt(self.amass[i]) * self.eq_geom_cart[i][1]
+        mwcart[i][2] = np.sqrt(self.amass[i]) * self.eq_geom_cart[i][2]
+
+    self.mwcart = mwcart
+
+    return mwcart</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="normal_mode_analysis" href="index.html">normal_mode_analysis</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="normal_mode_analysis.normal_mode_analysis.driver_process_abinitio_data" href="#normal_mode_analysis.normal_mode_analysis.driver_process_abinitio_data">driver_process_abinitio_data</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="normal_mode_analysis.normal_mode_analysis.Molecule" href="#normal_mode_analysis.normal_mode_analysis.Molecule">Molecule</a></code></h4>
+<ul class="">
+<li><code><a title="normal_mode_analysis.normal_mode_analysis.Molecule.get_centre_of_mass_mwc" href="#normal_mode_analysis.normal_mode_analysis.Molecule.get_centre_of_mass_mwc">get_centre_of_mass_mwc</a></code></li>
+<li><code><a title="normal_mode_analysis.normal_mode_analysis.Molecule.get_eckart_frame_self" href="#normal_mode_analysis.normal_mode_analysis.Molecule.get_eckart_frame_self">get_eckart_frame_self</a></code></li>
+<li><code><a title="normal_mode_analysis.normal_mode_analysis.Molecule.get_inertia_tensor" href="#normal_mode_analysis.normal_mode_analysis.Molecule.get_inertia_tensor">get_inertia_tensor</a></code></li>
+<li><code><a title="normal_mode_analysis.normal_mode_analysis.Molecule.get_mass_weighted_cartesian_coordinates" href="#normal_mode_analysis.normal_mode_analysis.Molecule.get_mass_weighted_cartesian_coordinates">get_mass_weighted_cartesian_coordinates</a></code></li>
+<li><code><a title="normal_mode_analysis.normal_mode_analysis.Molecule.harmonic_vibrational_analysis" href="#normal_mode_analysis.normal_mode_analysis.Molecule.harmonic_vibrational_analysis">harmonic_vibrational_analysis</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>
