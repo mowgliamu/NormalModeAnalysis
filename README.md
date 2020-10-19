@@ -9,7 +9,7 @@ A python program to perform harmonic vibrational analysis for a gas phase isolat
 
 ## Gaussian output files
 
-The log file and the *formatted* checkpoint files from a Gaussian calculation are needed to run this program. The path can be defined in ```run_normal_mode_analysis.py``. The path for these files can be specificed in the input.
+The log file and the *formatted* checkpoint files from a Gaussian calculation are needed to run this program. The path can be defined in ```run_normal_mode_analysis.py```. The path for these files can be specificed in the input.
 
 ## Running the program
 
@@ -19,7 +19,7 @@ Once the input parameters have been defined, the program can be invoked as:
 python run_normal_mode_analysis.py
 ```
 
-If executed successfully, the program will produce a plain text output file named as ```transform_cartesian_normal`` which not only have the normal modes and frequencies, but also has the coordinate transformation matrices for converting cartesian coordinates to normal coordinates and vice-versa. This is helpful for many applications.
+If executed successfully, the program will produce a plain text output file named as ```transform_cartesian_normal``` which not only have the normal modes and frequencies, but also has the coordinate transformation matrices for converting cartesian coordinates to normal coordinates and vice-versa. This is helpful for many applications.
 
 ## Running the tests
 
@@ -27,4 +27,4 @@ The unit tests can be run by invoking the following command in the top-level dir
 
 ```
 python -m unittest discover -v
-
+```
