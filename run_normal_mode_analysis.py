@@ -15,20 +15,21 @@ dimensionless = False
 
 # MAIN
 
-all_data = driver_process_abinitio_data(gaussian_version, data_minima_full_path)
+if __name__ == "__main__":
+    all_data = driver_process_abinitio_data(gaussian_version, data_minima_full_path)
 
-# Use get_attr
-number_of_atoms = getattr(all_data, 'natom')
-atomic_masses = getattr(all_data, 'amass')
-nmode = getattr(all_data, 'nmode')
-eq_geom = getattr(all_data, 'eq_geom_cart')
-frequencies = getattr(all_data, 'frequencies')
-normal_modes = getattr(all_data, 'Lmwc')
+    # Use get_attr
+    number_of_atoms = getattr(all_data, 'natom')
+    atomic_masses = getattr(all_data, 'amass')
+    nmode = getattr(all_data, 'nmode')
+    eq_geom = getattr(all_data, 'eq_geom_cart')
+    frequencies = getattr(all_data, 'frequencies')
+    normal_modes = getattr(all_data, 'Lmwc')
 
-# ============================================
-# X->Q and Q->X Transformation (Write to file)
-# ============================================
+    # ============================================
+    # X->Q and Q->X Transformation (Write to file)
+    # ============================================
 
-Q_to_X, X_to_Q = get_x_to_q_transformation_matrix(number_of_atoms, atomic_masses, nmode, eq_geom,
+    Q_to_X, X_to_Q = get_x_to_q_transformation_matrix(number_of_atoms, atomic_masses, nmode, eq_geom,
                                                   frequencies, normal_modes, dimensionless)
 
