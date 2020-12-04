@@ -1,3 +1,8 @@
+# @Author: Prateek Goel
+# @Date: 03/05/2017
+# @Email: prateik.goel@gmail.com
+# @Last modified by: Prateek
+
 from normal_mode_analysis.x_to_q import get_x_to_q_transformation_matrix
 from normal_mode_analysis.normal_mode_analysis import driver_process_abinitio_data
 

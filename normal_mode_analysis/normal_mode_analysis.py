@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 # !usr/bin/env python
 
+# @Author: Prateek Goel
+# @Date: 03/05/2017
+# @Email: prateik.goel@gmail.com
+# @Last modified by: Prateek
+
 import numpy as np
 
 from normal_mode_analysis.gaussian_interface import read_log_gaussian, read_fchk_gaussian
