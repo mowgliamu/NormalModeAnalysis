@@ -10,7 +10,7 @@ tags:
   - Duschinsky
 authors:
   - name: Prateek Goel
-    orcid: 0000-0000-0000-0000
+    orcid: 0000-0003-4084-7655
     affiliation: 1
 affiliations:
   - name: Independent researcher
