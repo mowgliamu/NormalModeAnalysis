@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nma-jax"
+version = "1.0.0"
+description = "Normal-mode analysis with JAX — modernized rewrite of a PhD-era package."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Prateek Goel" },
+]
+dependencies = [
+    "jax>=0.4.0",
+    "jaxlib>=0.4.0",
+    "numpy>=1.22",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+    "pytest-cov",
+    "ruff",
+    "mypy",
+]
+
+[project.scripts]
+nma-jax = "nma_jax.cli:main"
+
+[tool.setuptools]
+packages = ["nma_jax"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
