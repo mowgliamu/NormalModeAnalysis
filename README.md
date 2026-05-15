@@ -1,6 +1,6 @@
 # nma_jax — JAX-powered normal-mode analysis
 
-A modern, professional rewrite of a PhD-era Python-2 normal-mode-analysis
+A modern, professional normal-mode-analysis
 package. The numerics are all in **JAX** (jit-compiled, float64), the public
 API is built around frozen dataclasses, and several long-standing bugs from
 the original code have been fixed. New features include support for linear
@@ -137,25 +137,6 @@ nma-jax compare ref.log ref.fchk disp.log disp.fchk
 `inertia_tensor`, `translation_vectors`, `rotation_vectors`,
 `project_out_trans_rot`, `mass_weight_hessian`, `harmonic_analysis`, …) for
 users who want to compose their own pipeline.
-
-## What changed vs the original
-
-### Bug fixes
-
-| # | Bug in original | Fix |
-| --- | --- | --- |
-| 1 | **Wrong sign on inertia-tensor off-diagonals** — used `+ m·xy` instead of `−m·xy`. Silently gave a wrong tensor whenever the molecule wasn't already in principal-axis orientation. | Correct sign in `core.inertia_tensor`; regression test `test_inertia_tensor_sign_convention`. |
-| 2 | Moment of inertia computed about the origin, not the COM. `mwcart` was never re-shifted, and `get_eckart_frame_self` was decorated `@property` (which would have run on access) but never accessed. | `core.inertia_tensor` consumes COM-shifted coordinates; `Molecule.inertia_tensor` shifts first. |
-| 3 | `self.Ltransrot = Drot` saved **only the rotation** part of the trans+rot basis, so the gradient projection in the driver removed only rotation, not translation. | Full trans+rot projector basis is returned and used (`harmonic_analysis(...)["projector_basis"]`). Regression tests cover both pure-translation and pure-rotation gradients. |
-| 4 | `self.hessian = np.diagflat(rphval[3:])` — wrong slice (started at index 3, which mixed three zero modes into the vibrational block). | The reduced normal-mode Hessian is just `diag(eigenvalues)` of the vibrational subspace. |
-| 5 | `read_log_gaussian` returned **variable-length tuples** (1- or 2-tuple depending on whether ZPE was found), which crashed the driver when unpacking. | `read_log` returns a typed `LogResult` (always the same shape). |
-| 6 | File handles leaked: `re.search(open(filename).read())` never closes the file. | Uses `with open(...)` everywhere. |
-| 7 | `@property` decorators on methods with side effects (`get_eckart_frame_self`, `harmonic_vibrational_analysis`). Mutating state on attribute access is a well-known anti-pattern. | All transformations return new immutable instances (`replace(self, ...)`). |
-| 8 | ZPE scaling factor was mentioned in a comment but never applied. | `Molecule.zpe` returns `zpe_unscaled * zpe_scaling`; the scaling can be passed on construction or set per-call. |
-| 9 | Linear molecules unsupported (a TODO in the source). | `core.is_linear` detects them and `harmonic_analysis` projects out `3N−5` modes accordingly. Test on N₂. |
-| 10 | `hfreq_cm` defined twice (`input_nma.py` *and* `physical_constants.py`), at different precisions. | One CODATA-2018-derived constant, `nma.constants.HFREQ_CM`. |
-| 11 | `get_centre_of_mass_mwc` did a `sqrt(m)·sqrt(m)·x` detour instead of plain `m·x`. | `core.center_of_mass` is the obvious one-liner. |
-| 12 | Class attributes declared but never implemented: `PointGroup`, `RotationalConstants`, `Duschinsky`, `EckartMatrix`, `Displacement`. | `rotational_constants_cm` / `_ghz` are now properties; `EckartMatrix` and `Duschinsky`/`Displacement` are real first-class operations (`eckart_align`, `duschinsky`). Point-group detection is left as a TODO. |
 
 ### New features
 
