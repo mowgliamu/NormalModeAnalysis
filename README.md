@@ -139,7 +139,7 @@ tests/test_basic.py
 ## Installation
 
 ```bash
-git clone <this repo>
+git clone https://github.com/mowgliamu/NormalModeAnalysis.git
 cd normal_mode_analysis_jax
 pip install -e .
 ```
