@@ -1,105 +1,88 @@
-"""nma_jax — modernized normal-mode analysis with JAX.
+"""Normal-mode analysis with JAX.
 
-A pythonic, jit-friendly rewrite of the original PhD-era normal-mode
-analysis package. See ``examples/`` for usage.
+A modernised replacement for the original Python-2 PhD code, with all known
+bugs fixed and several new features (linear molecules, RRHO thermochemistry,
+Eckart alignment, Duschinsky rotation, mode-animation export).
+
+Top-level convenience imports
+-----------------------------
+::
+
+    from nma_jax import Molecule, read_gaussian, thermochemistry, eckart_align, duschinsky
+
+Quick start
+-----------
+::
+
+    from nma_jax import read_gaussian, thermochemistry
+
+    mol = read_gaussian("freq.log", "freq.fchk")
+    modes = mol.normal_modes()
+    print(modes.table())
+
+    thermo = thermochemistry(modes, temperature=298.15, symmetry_number=2)
+    print(thermo.summary())
 """
+
 from __future__ import annotations
 
-import jax
+# Enable 64-bit precision in JAX before anything else uses it.
+# Chemistry calculations need this; the default float32 quickly degrades
+# eigenvalue accuracy on stiff Hessians.
+import jax as _jax
 
-# Use 64-bit floats by default — chemistry needs the precision.
-# This affects only arrays subsequently created via jax.numpy; it does
-# not retroactively change the user's settings if they import jax first.
-jax.config.update("jax_enable_x64", True)
+_jax.config.update("jax_enable_x64", True)
 
-from .constants import (
-    BOHR_TO_ANG,
-    ANG_TO_BOHR,
-    FREQ_AU_TO_CM,
-    HARTREE_TO_EV,
-    HARTREE_TO_KCALMOL,
-    HARTREE_TO_KJMOL,
-)
-from .molecule import Molecule
-from .vibrational import (
-    VibrationalAnalysis,
-    harmonic_analysis,
-    project_gradient_to_modes,
-    inertia_tensor,
-    translation_rotation_basis,
-)
-from .thermochemistry import (
-    Thermochemistry,
-    thermochemistry,
-    zero_point_energy,
-    STANDARD_PRESSURE,
-)
-from .duschinsky import (
-    DuschinskyResult,
-    duschinsky,
-    eckart_rotation_matrix,
-)
-from .transformations import (
-    NormalCoordinateTransform,
-    build_transforms,
-    displace_along_mode,
-)
+# Public API
+from .molecule import Molecule, NormalModes
 from .io_gaussian import (
-    LogEnergies,
-    FchkData,
+    LogResult,
+    FchkResult,
     read_log,
     read_fchk,
-    load_molecule,
+    read_gaussian,
 )
-from .output import (
-    format_frequencies,
-    write_transform_table,
-    write_molden,
-    write_xyz,
+from .io_orca import (
+    OrcaHessResult,
+    OrcaOutResult,
+    read_hess,
+    read_out,
+    read_orca,
 )
-from .driver import analyse_minimum, analyse_transition_state
+from .eckart import (
+    EckartResult,
+    DuschinskyResult,
+    eckart_align,
+    apply_eckart_rotation,
+    duschinsky,
+)
+from .thermo import Thermo, thermochemistry
+from .transforms import TransformationMatrices, transformation_matrices, write_transform_file
 
 __version__ = "1.0.0"
 
 __all__ = [
-    # core
     "Molecule",
-    "VibrationalAnalysis",
-    "harmonic_analysis",
-    "project_gradient_to_modes",
-    "inertia_tensor",
-    "translation_rotation_basis",
-    # thermo
-    "Thermochemistry",
-    "thermochemistry",
-    "zero_point_energy",
-    "STANDARD_PRESSURE",
-    # Duschinsky
-    "DuschinskyResult",
-    "duschinsky",
-    "eckart_rotation_matrix",
-    # transforms
-    "NormalCoordinateTransform",
-    "build_transforms",
-    "displace_along_mode",
-    # I/O
-    "LogEnergies",
-    "FchkData",
+    "NormalModes",
+    "LogResult",
+    "FchkResult",
     "read_log",
     "read_fchk",
-    "load_molecule",
-    "format_frequencies",
-    "write_transform_table",
-    "write_molden",
-    "write_xyz",
-    # driver
-    "analyse_minimum",
-    "analyse_transition_state",
-    # constants (re-exported for convenience)
-    "BOHR_TO_ANG",
-    "ANG_TO_BOHR",
-    "FREQ_AU_TO_CM",
-    "HARTREE_TO_EV",
-    "HARTREE_TO_KCALMOL",
-    "HARTREE_TO_KJMOL",
+    "read_gaussian",
+    "OrcaHessResult",
+    "OrcaOutResult",
+    "read_hess",
+    "read_out",
+    "read_orca",
+    "EckartResult",
+    "DuschinskyResult",
+    "eckart_align",
+    "apply_eckart_rotation",
+    "duschinsky",
+    "Thermo",
+    "thermochemistry",
+    "TransformationMatrices",
+    "transformation_matrices",
+    "write_transform_file",
+    "__version__",
 ]
